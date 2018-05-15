@@ -7,7 +7,7 @@ This code will make your life easier.
 **How to run this program** 
 `python3 main.py`  
 Choose the folder which contains movies  
-Now open index.html file in the same folder   
+Now open `index.html` file in the same folder   
   	
 For ubuntu users, if you can't find your external hard disk or usb   
 you can find @ /media/[username]/[mounted device name]  

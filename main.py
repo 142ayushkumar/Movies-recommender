@@ -38,6 +38,7 @@ for file in files:
 			movies.append(file)
 
 data = [[] for i in range(len(movies))]
+print(len(movies))
 #data = dict()
 #modifying names removing irrelevant parts like [1080p] or anything within square brackets
 modified_movies = []
@@ -52,7 +53,9 @@ for movie in movies:
 
 '''
 	Removing some more strings is necessary may be
-	BluRay,m1080p , m720p, (E-Subs) ,720p.x264,720p, 1080p, 1080p.x264, x265, x264, 10bit, 6CH, HEVC-PSA,YIFY, WEB-DL  or some common user of torrent from whom you download your files
+	BluRay,m1080p , m720p, (E-Subs) ,720p.x264,720p, 1080p, 1080p.x264, x265, x264, 10bit, 6CH, HEVC-PSA,YIFY, WEB-DL, English,   
+	or 
+	some common user of torrent from whom you download your files
 	many possiblities
 '''
 
@@ -89,7 +92,10 @@ for movie in modified_movies:
 		for genre in genres:
 			genre_list.append(genre.text)
 		storylines = s.findAll("span", {"itemprop" : "description"})
-		data[counter] = [movie, float(extracted_rating[0]), genre_list, storylines[0].text, url] # user can find more info about particular info at url
+		try:
+			data[counter] = [movie, float(extracted_rating[0]), genre_list, storylines[0].text, url] # user can find more info about particular info at url
+		except:
+			print(movie,"this is creating a prob", counter , "is count")
 		counter = counter + 1
 new_data = sorted(data, key=itemgetter(1),reverse=1)
 
